@@ -88,7 +88,7 @@ export function InputSelect<TItem>({
           }
 
           if (items.length === 0) {
-            return <div className="RampInputSelect--dropdown-item">No items</div>
+            return <div className="RampInputSelect--dropdown-item">Loading employees..</div>
           }
 
           return items.map((item, index) => {
