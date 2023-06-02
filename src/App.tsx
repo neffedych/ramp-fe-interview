@@ -24,12 +24,9 @@ export function App() {
 
   const loadAllTransactions = useCallback(async () => {
 
-    //transactionsByEmployeeUtils.invalidateData();
-
     await employeeUtils.fetchAll();
     await paginatedTransactionsUtils.fetchAll();
 
-    // setIsLoading(false)
   }, [employeeUtils, paginatedTransactionsUtils]);
 
   const loadTransactionsByEmployee = useCallback(
