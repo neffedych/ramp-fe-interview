@@ -30,12 +30,17 @@ export function App() {
   }, [employeeUtils, paginatedTransactionsUtils, transactionsByEmployeeUtils])
 
   const loadTransactionsByEmployee = useCallback(
-    async (employeeId: string) => {
-      paginatedTransactionsUtils.invalidateData()
-      await transactionsByEmployeeUtils.fetchById(employeeId)
-    },
-    [paginatedTransactionsUtils, transactionsByEmployeeUtils]
-  )
+   async (employeeId: string) => {
+      if (employeeId === "all") {
+       await loadAllTransactions();
+       
+      } else {
+        paginatedTransactionsUtils.invalidateData();
+        await transactionsByEmployeeUtils.fetchById(employeeId);
+    }
+  },
+  [loadAllTransactions, paginatedTransactionsUtils, transactionsByEmployeeUtils]
+);
 
   useEffect(() => {
     if (employees === null && !employeeUtils.loading) {
