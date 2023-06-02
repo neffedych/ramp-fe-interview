@@ -23,14 +23,14 @@ export function App() {
   );
 
   const loadAllTransactions = useCallback(async () => {
-    // setIsLoading(true)
-    transactionsByEmployeeUtils.invalidateData();
+
+    //transactionsByEmployeeUtils.invalidateData();
 
     await employeeUtils.fetchAll();
     await paginatedTransactionsUtils.fetchAll();
 
     // setIsLoading(false)
-  }, [employeeUtils, paginatedTransactionsUtils, transactionsByEmployeeUtils]);
+  }, [employeeUtils, paginatedTransactionsUtils]);
 
   const loadTransactionsByEmployee = useCallback(
     async (employeeId: string) => {
